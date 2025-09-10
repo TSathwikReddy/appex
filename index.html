@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Interactive Webpage</title>
+
+  <!-- Step 2: CSS Styling -->
+  <style>
+
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url("https://images.unsplash.com/photo-1549497581-f0951660d157?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzODg2NjN8MHwxfHNlYXJjaHwyM3x8d2ViJTIwZGVzaWdufGVufDB8fHx8MTY5NDMyMjExNnww&ixlib=rb-4.0.3&q=80&w=1080");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+    margin: 20px;
+    line-height: 1.6;
+  }
+  
+  
+
+    h1 {
+      color: #2c3e50;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 10px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    h2 {
+      color: #16a085;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 8px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 15px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #d35400;
+    }
+  </style>
+</head>
+<body>
+  <!-- Step 1: HTML Structure -->
+  <h1>Welcome to My Interactive Webpage</h1>
+  <h2>About This Page</h2>
+  <p>
+    This webpage demonstrates basic HTML structure, CSS styling, and JavaScript interactivity.
+    You can click the button below to see a simple JavaScript action.
+  </p>
+
+  <p>
+    Learn more about web development at 
+    <a href="https://developer.mozilla.org/en-US/docs/Web" target="_blank">MDN Web Docs</a>.
+  </p>
+
+  <!-- Step 3: JavaScript Button -->
+  <button onclick="showAlert()">Click Me!</button>
+
+  <!-- Step 3: JavaScript -->
+  <script>
+    function showAlert() {
+      alert("Hello! You clicked the button. Welcome to JavaScript interactivity!");
+    }
+  </script>
+</body>
+</html>
