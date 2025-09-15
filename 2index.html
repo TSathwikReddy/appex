@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact + To-Do Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #eef1f8;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h2 {
+      margin: 0;
+      color: #4a4de7;
+    }
+    header nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    button {
+      background: #4a4de7;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #3436b8;
+    }
+
+    /* To-Do list style */
+    #taskList li {
+      margin: 5px 0;
+      padding: 8px;
+      background: #f1f1f1;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #taskList button {
+      width: auto;
+      padding: 5px 10px;
+      background: red;
+      border-radius: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #eef1f8;
+      margin-top: 20px;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>MiniApp</h2>
+    <nav>
+      <a href="#contact">Contact</a>
+      <a href="#todo">To-Do</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Left info card -->
+    <div class="card">
+      <h3>What you'll learn</h3>
+      <ul>
+        <li>HTML forms & inputs</li>
+        <li>JS validation</li>
+        <li>Responsive layout (Flexbox + Grid)</li>
+        <li>DOM manipulation (To-Do)</li>
+      </ul>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="card" id="contact">
+      <h3>Contact Us</h3>
+      <form id="contactForm">
+        <label for="name">Name *</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email *</label>
+        <input type="email" id="email" required>
+
+        <label for="message">Message *</label>
+        <textarea id="message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <!-- To-Do List -->
+    <div class="card" id="todo">
+      <h3>To-Do List</h3>
+      <input type="text" id="taskInput" placeholder="Add a task...">
+      <button onclick="addTask()">Add</button>
+      <ul id="taskList"></ul>
+    </div>
+  </div>
+
+  <footer>
+    Made for learning — responsive + accessible basics.
+  </footer>
+
+  <script>
+    // Contact form validation
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let message = document.getElementById("message").value.trim();
+
+      let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if(name === "" || email === "" || message === ""){
+        alert("All fields are required!");
+        e.preventDefault();
+      } else if(!emailPattern.test(email)){
+        alert("Please enter a valid email address!");
+        e.preventDefault();
+      } else {
+        alert("Form submitted successfully!");
+      }
+    });
+
+    // To-Do list function
+    function addTask() {
+      let task = document.getElementById("taskInput").value.trim();
+      if(task === "") {
+        alert("Please enter a task!");
+        return;
+      }
+      let li = document.createElement("li");
+      li.textContent = task;
+
+      let removeBtn = document.createElement("button");
+      removeBtn.textContent = "❌";
+      removeBtn.onclick = function() {
+        li.remove();
+      };
+
+      li.appendChild(removeBtn);
+      document.getElementById("taskList").appendChild(li);
+      document.getElementById("taskInput").value = "";
+    }
+  </script>
+</body>
+</html>
